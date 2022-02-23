@@ -70,9 +70,12 @@ const operator = function(a, b, op) {
     if (result > 9999999999999) {
         return "Number too big!";
     };
+    if (result == "Get out of here!") {
+        return result;
+    }
     checkLength = result.toString();
     if (checkLength.length > 13) {
-        console.log(checkLength)
+        console.log(checkLength.length)
         result = Math.round(result * 100) / 100
         checkLength = result.toString();
         if (checkLength.length > 13) {
@@ -82,6 +85,9 @@ const operator = function(a, b, op) {
                 return "Number too long!"
             }
         }
+    }
+    if (isNaN(result)) {
+        return "ERROR";
     }
     return result;
 };
