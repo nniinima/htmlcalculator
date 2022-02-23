@@ -14,6 +14,9 @@ const sum = function(numlist) {
 };
 
 const divide = function(a, b) {
+    if (b == 0){
+        return "Get out of here!"
+    }
     const result = a / b;
     return result;
 }
@@ -63,6 +66,9 @@ const operator = function(a, b, op) {
         case "n√":
             result = nthRoot(a, b)
             break;
+    };
+    if (result > 9999999999999){
+        return "Number too big!";
     };
     return result;
 };
@@ -194,6 +200,15 @@ function del() {
     var tbInput = document.getElementById("tbInput");
     tbInput.value = tbInput.value.substr(0, tbInput.value.length -1);
 };
+
+$('input').on('keypress', function (event) {
+    var regex = new RegExp("^[0-9]+$");
+    var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
+    if (!regex.test(key)) {
+       event.preventDefault();
+       return false;
+    }
+});
 
 $(window).ready(updateHeight);
 $(window).resize(updateHeight);
