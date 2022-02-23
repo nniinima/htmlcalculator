@@ -137,7 +137,7 @@ function input(click) {
         }else if (opStepOne == false){
             a = parseFloat(tbInput.value);
             op = click.value;
-            tbInput.value = 0;
+            tbInput.value = a;
             opStepOne = true;
             lastClickOp = true;
         }else if (opStepTwo == false) {
