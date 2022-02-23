@@ -84,6 +84,7 @@ var lastClickR = false;
 
 function input(click) {
     var tbInput = document.getElementById("tbInput");
+    var savedInput = document.getElementById("savedInput");
     console.log(opStepOne)
     console.log(opStepTwo)
     if (click.value == "AC") {
@@ -96,6 +97,7 @@ function input(click) {
         lastClickOp = false;
         lastClickR = false;
         tbInput.value = result;
+        savedInput.innerHTML = "";
     }else if (click.value == "=") {
         if (opStepOne == false){
             a = parseFloat(tbInput.value);
@@ -114,6 +116,7 @@ function input(click) {
                 opStepOne = false;
                 opStepTwo = false;
             }
+            savedInput.innerHTML = a + " " + op + " " + b + " =";
         } else {
             if(lastClickR == false){
                 console.log("darn: ")
@@ -128,6 +131,7 @@ function input(click) {
                 opStepOne = false;
                 opStepTwo = false;
             }
+            savedInput.innerHTML = result + " " + op + " " + b + " =";
         }
     }else if (isNaN(click.value) && click.value != "."){
         lastClickR = false;
@@ -140,6 +144,7 @@ function input(click) {
             tbInput.value = a;
             opStepOne = true;
             lastClickOp = true;
+            savedInput.innerHTML = a + " " + op;
         }else if (opStepTwo == false) {
             b = parseFloat(tbInput.value);
             result = operator(a, b, op);
@@ -151,6 +156,7 @@ function input(click) {
                 opStepOne = false;
                 opStepTwo = false;
             }
+            savedInput.innerHTML = result + " " + op;
         } else {
             b = parseFloat(tbInput.value);
             result = operator(result, b, op);
@@ -163,6 +169,7 @@ function input(click) {
                 opStepOne = false;
                 opStepTwo = false;
             }
+            savedInput.innerHTML = result + " " + op;
         }
     }else {
         if (lastClickR == true){
@@ -176,6 +183,7 @@ function input(click) {
             lastClickR = false;
             tbInput.value = ""
             tbInput.value = click.value;
+            savedInput.innerHTML = "";
             return;
         }
         if (tbInput.value.length > 12){
