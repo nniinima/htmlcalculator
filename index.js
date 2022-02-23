@@ -67,9 +67,22 @@ const operator = function(a, b, op) {
             result = nthRoot(a, b)
             break;
     };
-    if (result > 9999999999999){
+    if (result > 9999999999999) {
         return "Number too big!";
     };
+    checkLength = result.toString();
+    if (checkLength.length > 13) {
+        console.log(checkLength)
+        result = Math.round(result * 100) / 100
+        checkLength = result.toString();
+        if (checkLength.length > 13) {
+            result = Math.round(result)
+            checkLength = result.toString();
+            if (checkLength.length > 13) {
+                return "Number too long!"
+            }
+        }
+    }
     return result;
 };
 
@@ -81,6 +94,7 @@ var opStepOne = false;
 var opStepTwo = false;
 var lastClickOp = false;
 var lastClickR = false;
+var checkLength
 
 function input(click) {
     var tbInput = document.getElementById("tbInput");
@@ -96,6 +110,7 @@ function input(click) {
         opStepTwo = false;
         lastClickOp = false;
         lastClickR = false;
+        checkLength = 0;
         tbInput.value = result;
         savedInput.innerHTML = "";
     }else if (click.value == "=") {
@@ -122,6 +137,7 @@ function input(click) {
                 console.log("darn: ")
                 b = parseFloat(tbInput.value);
             };
+            preResult = result;
             result = operator(result, b, op);
             tbInput.value = result;
             lastClickOp = true;
@@ -131,7 +147,7 @@ function input(click) {
                 opStepOne = false;
                 opStepTwo = false;
             }
-            savedInput.innerHTML = result + " " + op + " " + b + " =";
+            savedInput.innerHTML = preResult + " " + op + " " + b + " =";
         }
     }else if (isNaN(click.value) && click.value != "."){
         lastClickR = false;
@@ -181,6 +197,7 @@ function input(click) {
             opStepTwo = false
             lastClickOp = false
             lastClickR = false;
+            checkLength = 0;
             tbInput.value = ""
             tbInput.value = click.value;
             savedInput.innerHTML = "";
