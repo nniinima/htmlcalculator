@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Calculator App</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <div id="main">
+        <span class="bigtextfield">CALCULATOR APP</span>
+        <div id="calculator">
+            <p class="textfield"> Copyright &copy; 2022-<script>document.write(new Date().getFullYear())</script> nniinima All Rights Reserved</p>
+            <input id="tbInput" type="text" value=0 />
+            <div id="VirtualKey">
+                <input id="btnexp" type="button" value="xⁿ" onclick="input(this)" />
+                <input id="btnnrt" type="button" value="n√" onclick="input(this)" />
+                <input id="btndel" type="button" value="del" onclick="del();" />
+                <input id="btnAC" type="button" value="AC" onclick="input(this)" />
+                <input id="btn7" type="button" value=7 onclick="input(this)" />
+                <input id="btn8" type="button" value=8 onclick="input(this)" />
+                <input id="btn9" type="button" value=9 onclick="input(this)" />
+                <input id="btn÷" type="button" value="÷" onclick="input(this)" />
+                <input id="btn4" type="button" value=4 onclick="input(this)" />
+                <input id="btn5" type="button" value=5 onclick="input(this)" />
+                <input id="btn6" type="button" value=6 onclick="input(this)" />
+                <input id="btnx" type="button" value="x" onclick="input(this)" />
+                <input id="btn1" type="button" value=1 onclick="input(this)" />
+                <input id="btn2" type="button" value=2 onclick="input(this)" />
+                <input id="btn3" type="button" value=3 onclick="input(this)" />
+                <input id="btn-" type="button" value="-" onclick="input(this)" />
+                <input id="btn0" type="button" value=0 onclick="input(this)" />
+                <input id="btn." type="button" value="." onclick="input(this)" />
+                <input id="btn=" type="button" value="=" onclick="input(this)" />
+                <input id="btn+" type="button" value="+" onclick="input(this)" />
+            </div>
+        </div>
+    </div>
+    <script src="index.js"></script>
+  </body>
+</html>
