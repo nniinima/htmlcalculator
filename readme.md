@@ -1,0 +1,1 @@
+Calculator project made as a part of Project Odin Curriculum.
