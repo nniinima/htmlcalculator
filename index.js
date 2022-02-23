@@ -67,16 +67,19 @@ const operator = function(a, b, op) {
     return result;
 };
 
-var a = 0
-var b = 0
-var op = "0"
-var result = 0
-var opStepOne = false
-var opStepTwo = false
-var lastClickOp = false
+var a = 0;
+var b = 0;
+var op = "0";
+var result = 0;
+var opStepOne = false;
+var opStepTwo = false;
+var lastClickOp = false;
+var lastClickR = false;
 
 function input(click) {
     var tbInput = document.getElementById("tbInput");
+    console.log(opStepOne)
+    console.log(opStepTwo)
     if (click.value == "AC") {
         a = 0
         b = 0
@@ -85,13 +88,43 @@ function input(click) {
         opStepOne = false
         opStepTwo = false
         lastClickOp = false
+        lastClickR = false;
         tbInput.value = result;
     }else if (click.value == "=") {
-        b = parseFloat(tbInput.value);
-        result = operator(a, b, op);
-        tbInput.value = 0;
-        tbInput.value = result;
+        if (opStepOne == false){
+            a = parseFloat(tbInput.value);
+            tbInput.value = a;
+            opStepOne = true;
+            lastClickOp = true;
+            lastClickR = true;
+        }else if (opStepTwo == false) {
+            b = parseFloat(tbInput.value);
+            result = operator(a, b, op);
+            tbInput.value = result;
+            lastClickOp = true;
+            lastClickR = true;
+            opStepTwo = true;
+            if (result == 0){
+                opStepOne = false;
+                opStepTwo = false;
+            }
+        } else {
+            if(lastClickR == false){
+                console.log("darn: ")
+                b = parseFloat(tbInput.value);
+            };
+            result = operator(result, b, op);
+            tbInput.value = result;
+            lastClickOp = true;
+            lastClickR = true;
+            console.log("b: " + b)
+            if (result == 0){
+                opStepOne = false;
+                opStepTwo = false;
+            }
+        }
     }else if (isNaN(click.value) && click.value != "."){
+        lastClickR = false;
         if (lastClickOp == true){
             op = click.value;
             lastClickOp = true;
@@ -103,13 +136,14 @@ function input(click) {
             lastClickOp = true;
         }else if (opStepTwo == false) {
             b = parseFloat(tbInput.value);
-            console.log("a is " + a);
-            console.log("b is " + b);
-            console.log("op is " + op);
             result = operator(a, b, op);
             tbInput.value = result;
             opStepTwo = true;
             lastClickOp = true;
+            if (result == 0){
+                opStepOne = false;
+                opStepTwo = false;
+            }
         } else {
             b = parseFloat(tbInput.value);
             result = operator(result, b, op);
@@ -117,17 +151,41 @@ function input(click) {
             tbInput.value = 0;
             tbInput.value = result;
             lastClickOp = true;
+            lastClickR = false;
+            if (result == 0){
+                opStepOne = false;
+                opStepTwo = false;
+            }
         }
-    } else {
+    }else {
+        if (lastClickR == true){
+            a = 0
+            b = 0
+            op = "0"
+            result = 0
+            opStepOne = false
+            opStepTwo = false
+            lastClickOp = false
+            lastClickR = false;
+            tbInput.value = ""
+            tbInput.value = click.value;
+            return;
+        }
+        lastClickR = false;
         if (lastClickOp == true){
             tbInput.value = 0;
         }
         lastClickOp = false;
+        if (tbInput.value.includes(".", 0) == true){
+            if (click.value == "."){
+                return;
+            }
+        }
         if (tbInput.value == 0){
             tbInput.value = "";
             tbInput.value = tbInput.value + click.value;
-        } else {
-        tbInput.value = tbInput.value + click.value;
+        }else {
+            tbInput.value = tbInput.value + click.value;
         };
     };
 };

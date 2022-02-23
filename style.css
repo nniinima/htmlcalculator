@@ -89,7 +89,7 @@ input:focus{
 }
 
 body {
-	background: linear-gradient(-45deg, #000000, #ffffff, #0400ff, #00ff0d);
+	background: linear-gradient(-45deg, #CE8465, #B965CE, #65AFCE, #7BCE65);
 	background-size: 400% 400%;
 	animation: gradient 15s ease infinite;
 	height: 100vh;
