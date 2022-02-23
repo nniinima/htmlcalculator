@@ -178,6 +178,9 @@ function input(click) {
             tbInput.value = click.value;
             return;
         }
+        if (tbInput.value.length > 12){
+            return;
+        }
         lastClickR = false;
         if (lastClickOp == true){
             tbInput.value = 0;
