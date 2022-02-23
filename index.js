@@ -87,13 +87,13 @@ function input(click) {
     console.log(opStepOne)
     console.log(opStepTwo)
     if (click.value == "AC") {
-        a = 0
-        b = 0
-        op = "0"
-        result = 0
-        opStepOne = false
-        opStepTwo = false
-        lastClickOp = false
+        a = 0;
+        b = 0;
+        op = "0";
+        result = 0;
+        opStepOne = false;
+        opStepTwo = false;
+        lastClickOp = false;
         lastClickR = false;
         tbInput.value = result;
     }else if (click.value == "=") {
@@ -143,6 +143,7 @@ function input(click) {
         }else if (opStepTwo == false) {
             b = parseFloat(tbInput.value);
             result = operator(a, b, op);
+            op = click.value;
             tbInput.value = result;
             opStepTwo = true;
             lastClickOp = true;
