@@ -105,8 +105,6 @@ var checkLength
 function input(click) {
     var tbInput = document.getElementById("tbInput");
     var savedInput = document.getElementById("savedInput");
-    console.log(opStepOne)
-    console.log(opStepTwo)
     if (click.value == "AC") {
         a = 0;
         b = 0;
@@ -126,6 +124,9 @@ function input(click) {
             opStepOne = true;
             lastClickOp = true;
             lastClickR = true;
+            if(isNaN(tbInput.value)) {
+                tbInput.value = "Error"
+            }
         }else if (opStepTwo == false) {
             b = parseFloat(tbInput.value);
             result = operator(a, b, op);
@@ -136,6 +137,9 @@ function input(click) {
             if (result == 0){
                 opStepOne = false;
                 opStepTwo = false;
+            }
+            if(isNaN(tbInput.value)) {
+                tbInput.value = "Error"
             }
             savedInput.innerHTML = a + " " + op + " " + b + " =";
         } else {
@@ -152,6 +156,9 @@ function input(click) {
             if (result == 0){
                 opStepOne = false;
                 opStepTwo = false;
+            }
+            if(isNaN(tbInput.value)) {
+                tbInput.value = "Error"
             }
             savedInput.innerHTML = preResult + " " + op + " " + b + " =";
         }
