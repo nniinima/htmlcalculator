@@ -160,6 +160,7 @@ function input(click) {
         if (lastClickOp == true){
             op = click.value;
             lastClickOp = true;
+            savedInput.innerHTML = savedInput.innerHTML.substr(0, savedInput.innerHTML.length -1) + op;
         }else if (opStepOne == false){
             a = parseFloat(tbInput.value);
             op = click.value;
@@ -204,9 +205,14 @@ function input(click) {
             lastClickOp = false
             lastClickR = false;
             checkLength = 0;
+            savedInput.innerHTML = "";
+            if(click.value == "." && tbInput.value == 0){
+                tbInput.value = click.value;
+                savedInput.innerHTML = "";
+                return;
+            }
             tbInput.value = ""
             tbInput.value = click.value;
-            savedInput.innerHTML = "";
             return;
         }
         if (tbInput.value.length > 12){
